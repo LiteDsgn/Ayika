@@ -12,6 +12,8 @@ function Icon({ type }: { type: StatItem['icon'] }) {
   return <Star className={className} />
 }
 
+import CountUp from '@/components/ui/CountUp'
+
 function Stat({ item }: { item: StatItem }) {
   return (
     <motion.div className="relative w-full" variants={fadeUp}>
@@ -19,7 +21,9 @@ function Stat({ item }: { item: StatItem }) {
         <Icon type={item.icon} />
       </div>
       <div className="mt-9 flex justify-center">
-        <div className="font-museo text-4xl font-bold leading-10 text-purple-600">{item.value}</div>
+        <div className="font-museo text-4xl font-bold leading-10 text-purple-600">
+          <CountUp value={item.value} />
+        </div>
       </div>
       <div className="mt-2 flex justify-center">
         <div className="text-center text-lg leading-7 text-neutral-900">{item.title}</div>
