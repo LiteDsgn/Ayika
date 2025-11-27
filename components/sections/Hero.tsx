@@ -7,6 +7,8 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import type { HeroContent } from '@/types/content'
 
+import Typewriter from '@/components/ui/Typewriter'
+
 export default function Hero(props: HeroContent) {
   const {
     chipText,
@@ -41,7 +43,16 @@ export default function Hero(props: HeroContent) {
               <motion.div variants={fadeUp}>
                 <h1 className="font-museo text-[40px] leading-[44px] md:text-[60px] md:leading-[60px]">
                   <span className="text-neutral-900">{headlinePrimary}</span>
-                  <span className="text-purple-400"> {headlineAccent}</span>
+                  <span className="text-purple-400"> 
+                    <Typewriter 
+                      words={[
+                        headlineAccent.trim(),
+                        "in flow with it",
+                        "for peak energy"
+                      ]} 
+                      delay={1000}
+                    />
+                  </span>
                 </h1>
               </motion.div>
 
