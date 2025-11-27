@@ -228,7 +228,8 @@ export async function getHomePage(): Promise<HomePageContent> {
         {
           question: 'When will Ayika launch?',
           answer:
-            "We're currently in final testing with our beta users. Join the waitlist to be among the first notified when we launch publicly. Early waitlist members will get priority access!"
+            "We're currently in final testing with our beta users. Join the waitlist to be among the first notified when we launch publicly. Early waitlist members will get priority access!",
+          open: true
         },
         {
           question: 'How does Ayika protect my privacy?',
@@ -238,8 +239,7 @@ export async function getHomePage(): Promise<HomePageContent> {
         {
           question: 'What if my cycle is irregular?',
           answer:
-            "Ayika works great with irregular cycles! You can input multiple recent period dates to improve predictions, or use our Ghost Cycle feature which aligns with the moon's 29.5-day rhythm for a predictable pattern.",
-          open: true
+            "Ayika works great with irregular cycles! You can input multiple recent period dates to improve predictions, or use our Ghost Cycle feature which aligns with the moon's 29.5-day rhythm for a predictable pattern."
         },
         {
           question: 'Can I use Ayika without tracking my period?',
