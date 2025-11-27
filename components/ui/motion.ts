@@ -21,3 +21,14 @@ export const hoverLift = {
   whileHover: { scale: 1.02 },
   whileTap: { scale: 0.98 },
 }
+
+export const floating = {
+  animate: {
+    y: [0, -10, 0],
+    transition: {
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+}

@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { fadeUp, staggerContainer } from '@/components/ui/motion'
+import { fadeUp, staggerContainer, floating } from '@/components/ui/motion'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -100,13 +100,15 @@ export default function Hero(props: HeroContent) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
-                <div className="relative w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[247/257]">
-                  <Image src="/Hero/main/tasks-img.svg" alt="Tasks" fill className="object-cover" priority />
-                </div>
+                <motion.div className="flex flex-col gap-2 w-full" variants={floating} animate="animate">
+                  <div className="relative w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[247/257]">
+                    <Image src="/Hero/main/tasks-img.svg" alt="Tasks" fill className="object-cover" priority />
+                  </div>
 
-                <div className="relative w-[82%] overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[203/225]">
-                  <Image src="/Hero/main/chart-img.svg" alt="Chart" fill className="object-cover" priority />
-                </div>
+                  <div className="relative w-[82%] overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[203/225]">
+                    <Image src="/Hero/main/chart-img.svg" alt="Chart" fill className="object-cover" priority />
+                  </div>
+                </motion.div>
               </motion.div>
 
               <motion.div 
@@ -115,12 +117,25 @@ export default function Hero(props: HeroContent) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
               >
-                <div className="relative w-full overflow-hidden rounded-xl aspect-[275/393]">
-                  <Image src="/Hero/main/user-img.svg" alt="User" fill className="object-cover" priority />
-                </div>
-                <div className="relative w-full overflow-hidden rounded-xl aspect-[275/70]">
-                  <Image src="/Hero/main/ayikaScore.svg" alt="Score" fill className="object-contain" priority />
-                </div>
+                <motion.div
+                  className="flex flex-col gap-2 w-full"
+                  animate={{
+                    y: [0, -15, 0],
+                    transition: {
+                      duration: 7,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }
+                  }}
+                >
+                  <div className="relative w-full overflow-hidden rounded-xl aspect-[275/393]">
+                    <Image src="/Hero/main/user-img.svg" alt="User" fill className="object-cover" priority />
+                  </div>
+                  <div className="relative w-full overflow-hidden rounded-xl aspect-[275/70]">
+                    <Image src="/Hero/main/ayikaScore.svg" alt="Score" fill className="object-contain" priority />
+                  </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
