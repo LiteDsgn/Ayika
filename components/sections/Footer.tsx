@@ -8,7 +8,7 @@ import type { FooterContent } from '@/types/content'
 export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, columns, cta, copyright }: FooterContent) {
   return (
     <Section>
-      <div className="pt-24 px-6 md:px-20 lg:px-36 rounded-t-[32px] bg-purple-900 relative overflow-hidden">
+      <div className="pt-24 px-6 md:px-[5%] rounded-t-[32px] bg-purple-900 relative overflow-hidden">
         {backgroundImageUrl ? (
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <Image src={backgroundImageUrl} alt="Footer Background" fill className="object-cover" />
@@ -16,7 +16,7 @@ export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, colum
           </div>
         ) : null}
 
-        <Container>
+        <Container className="max-w-[1280px]">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-10">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

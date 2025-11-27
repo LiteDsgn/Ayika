@@ -19,18 +19,8 @@ export default function Hero(props: HeroContent) {
   } = props
 
   return (
-    <div className="relative isolate w-full min-h-[38rem] md:min-h-[47rem]">
-      <div className="absolute inset-0 -z-10">
-        {backgroundImageUrl ? (
-          <Image
-            src={backgroundImageUrl}
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-          />
-        ) : null}
-      </div>
+    <div className="relative isolate w-full min-h-[38rem] md:min-h-[47rem] overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-white" />
 
       <div className="px-6 md:px-20 py-16 md:py-24">
         <Container>
@@ -73,6 +63,7 @@ export default function Hero(props: HeroContent) {
                   width={40}
                   height={40}
                   className="rounded-2xl ring-2 ring-white"
+                  priority
                 />
               ))}
             </div>
@@ -84,25 +75,28 @@ export default function Hero(props: HeroContent) {
         </div>
 
         <div className="relative mx-auto justify-self-center w-full max-w-[536px] aspect-[536/556] h-auto">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] -z-10">
+            <Image src="/Hero/main/Icon Purple.svg" alt="" fill className="object-contain" />
+          </div>
           <div className="absolute left-[1.5%] top-[1.4%] h-[87%] w-[76%] rounded-3xl bg-purple-800 opacity-10 blur-[48px]" />
           <div className="absolute left-[2.6%] top-[1.4%] h-[87%] w-[76%] rounded-[204px] bg-purple-800 opacity-10 blur-[48px]" />
 
           <div className="absolute left-[52.6%] top-[12.6%] inline-flex w-[46%] flex-col gap-2">
             <div className="relative w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[247/257]">
-              <Image src="/Hero/main/tasks-img.svg" alt="Tasks" fill className="object-cover" />
+              <Image src="/Hero/main/tasks-img.svg" alt="Tasks" fill className="object-cover" priority />
             </div>
 
             <div className="relative w-[82%] overflow-hidden rounded-xl border border-[#E5E5E5] bg-white aspect-[203/225]">
-              <Image src="/Hero/main/chart-img.svg" alt="Chart" fill className="object-cover" />
+              <Image src="/Hero/main/chart-img.svg" alt="Chart" fill className="object-cover" priority />
             </div>
           </div>
 
           <div className="absolute left-0 top-0 inline-flex w-[51%] flex-col gap-2">
             <div className="relative w-full overflow-hidden rounded-xl aspect-[275/393]">
-              <Image src="/Hero/main/user-img.svg" alt="User" fill className="object-cover" />
+              <Image src="/Hero/main/user-img.svg" alt="User" fill className="object-cover" priority />
             </div>
             <div className="relative w-full overflow-hidden rounded-xl aspect-[275/70]">
-              <Image src="/Hero/main/ayikaScore.svg" alt="Score" fill className="object-contain" />
+              <Image src="/Hero/main/ayikaScore.svg" alt="Score" fill className="object-contain" priority />
             </div>
           </div>
         </div>

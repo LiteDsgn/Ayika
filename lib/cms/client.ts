@@ -138,7 +138,7 @@ export async function getHomePage(): Promise<HomePageContent> {
         ctaText: 'Calculate My Phase',
         footerNote: 'Full version includes 4-week forecasting, energy tracking, and calendar integration'
       },
-      backgroundImageUrl: '/Hero/main/hero-pattern-img.jpg'
+      backgroundImageUrl: '/Calculator/calculator-bg.png'
     },
     resources: {
       headline: 'Insights & Resources',

@@ -32,8 +32,8 @@ export default function Resources({ headline, subcopy, items }: ResourcesContent
   return (
     <Section id="resources">
       <div className="px-4 py-4">
-        <div className="rounded-[2rem] bg-white px-6 md:px-20 lg:px-32 py-6 md:py-32">
-          <Container>
+        <div className="rounded-[2rem] bg-white px-6 md:px-[5%] py-6 md:py-32">
+          <Container className="max-w-[1280px]">
             <div className="mx-auto flex flex-col items-center gap-16">
               <div className="flex flex-col items-center gap-4">
                 <h2 className="text-center font-museo text-[36px] leading-[40px] md:text-[40px] text-purple-600">{headline}</h2>

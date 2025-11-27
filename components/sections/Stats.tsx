@@ -31,8 +31,8 @@ function Stat({ item }: { item: StatItem }) {
 export default function Stats({ items }: StatsContent) {
   return (
     <div className="px-4">
-      <div className="rounded-t-[2rem] bg-purple-100 px-4 md:px-20 lg:px-36 py-16">
-        <div className="mx-auto w-full max-w-screen-xl">
+      <div className="rounded-t-[2rem] bg-purple-100 px-4 md:px-[5%] py-16">
+        <div className="mx-auto w-full max-w-[1280px]">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
             {items.map((it, idx) => (
               <Stat key={idx} item={it} />

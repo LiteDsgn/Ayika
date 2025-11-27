@@ -49,7 +49,7 @@ export default function Nav() {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <div className="relative w-10 h-10 rounded-[5px] overflow-hidden bg-purple-600">
-                <Image src="https://placehold.co/26x27" alt="Ayika" width={26} height={27} className="absolute left-[6.25px] top-[6.25px]" />
+                <Image src="/Nav/Logo.png" alt="Ayika" width={26} height={27} className="absolute left-[6.25px] top-[6.25px]" />
               </div>
               <div className="inline-flex flex-col">
                 <span className="font-museo text-[20px] leading-[28px] font-bold text-purple-600">Ayika</span>
@@ -116,4 +116,3 @@ export default function Nav() {
     </>
   )
 }
-

@@ -18,12 +18,25 @@ function Bullet({ text }: { text: string }) {
   )
 }
 
-function FeatureCard({ item }: { item: FeatureCardContent }) {
+function FeatureCard({ item, isSmartLayout = false }: { item: FeatureCardContent; isSmartLayout?: boolean }) {
   const isAlert = item.imageSrc?.includes('intelligent-alert')
-  
+  const containerCls = isSmartLayout
+    ? 'grid grid-cols-1 lg:grid-cols-2 h-full w-full items-stretch overflow-hidden rounded-[12px] bg-neutral-0 p-[3px] shadow-[0_0_2px_rgba(0,0,0,0.05)]'
+    : 'flex flex-col lg:flex-row h-full w-full items-start justify-start overflow-hidden rounded-[12px] bg-neutral-0 p-[3px] shadow-[0_0_2px_rgba(0,0,0,0.05)]'
+  const textCls = isSmartLayout ? 'p-6 md:p-8' : 'flex-1 p-6 md:p-8'
+  const imageOuterCls = isSmartLayout ? 'px-[3px] pt-[3px] pb-[3px]' : 'w-full lg:w-auto px-[3px] pt-[3px] pb-[3px]'
+  const imageFrameCls = isSmartLayout
+    ? `${isAlert ? 'aspect-[349/379]' : 'aspect-[736/415]'} relative w-full overflow-hidden rounded-10 lg:h-full lg:aspect-auto lg:min-h-[320px]`
+    : `relative overflow-hidden rounded-10 w-full ${isAlert ? 'aspect-[349/379] lg:w-[349px] lg:h-[379px]' : 'aspect-[736/415] lg:w-[736px] lg:h-[415px]'}`
+  const sizesAttr = isSmartLayout
+    ? '(max-width: 1024px) 100vw, 50vw'
+    : isAlert
+      ? '(max-width: 767px) 100vw, (max-width: 1024px) 349px, 349px'
+      : '(max-width: 767px) 100vw, (max-width: 1024px) 100vw, 736px'
+
   return (
-    <motion.div className="flex flex-col lg:flex-row h-full w-full items-start justify-start overflow-hidden rounded-[12px] bg-neutral-0 p-[3px] shadow-[0_0_2px_rgba(0,0,0,0.05)]" variants={fadeUp} {...hoverLift}>
-      <div className="flex-1 p-6 md:p-8">
+    <motion.div className={containerCls} variants={fadeUp} {...hoverLift}>
+      <div className={textCls}>
         <div className="inline-flex items-center justify-center rounded-[16px] p-2">
           <div className="relative h-12 w-12 overflow-hidden">
             <Image src={item.iconSrc} alt={`${item.title} icon`} fill className="object-contain" />
@@ -42,14 +55,14 @@ function FeatureCard({ item }: { item: FeatureCardContent }) {
         </div>
       </div>
       {item.imageSrc ? (
-        <div className="w-full lg:w-auto px-[3px] pt-[3px] pb-[3px]">
-          <div className={`relative overflow-hidden rounded-10 w-full ${isAlert ? 'aspect-[349/379] lg:w-[349px] lg:h-[379px]' : 'aspect-[736/415] lg:w-[736px] lg:h-[415px]'}`}>
+        <div className={imageOuterCls}>
+          <div className={imageFrameCls}>
             <Image
               src={item.imageSrc}
               alt={`${item.title} preview`}
               fill
               className="object-cover"
-              sizes={isAlert ? '(max-width: 767px) 100vw, (max-width: 1024px) 349px, 349px' : '(max-width: 767px) 100vw, (max-width: 1024px) 100vw, 736px'}
+              sizes={sizesAttr}
             />
           </div>
         </div>
@@ -64,8 +77,8 @@ export default function Features(props: FeaturesContent) {
   return (
     <Section id="features">
       <div className="px-4 py-4">
-        <div className="rounded-[2rem] bg-purple-50 px-6 md:px-20 lg:px-32 py-6 md:py-32">
-          <Container>
+        <div className="rounded-[2rem] bg-purple-50 px-6 md:px-[5%] py-6 md:py-32">
+          <Container className="max-w-[1280px]">
             <div className="flex flex-col gap-16">
               <div className="flex flex-col items-start gap-4">
                 <h2 className="text-left font-museo text-[36px] leading-[40px] text-purple-600 md:text-[40px]">
@@ -78,7 +91,7 @@ export default function Features(props: FeaturesContent) {
 
               <motion.div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
                 <div className="lg:col-span-3">
-                  <FeatureCard item={smart} />
+                  <FeatureCard item={smart} isSmartLayout />
                 </div>
 
                 <div className="lg:col-span-1">
