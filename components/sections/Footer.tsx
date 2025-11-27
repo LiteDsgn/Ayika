@@ -1,5 +1,8 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { fadeUp } from '@/components/ui/motion'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import Input from '@/components/ui/Input'
@@ -9,7 +12,13 @@ import type { FooterContent } from '@/types/content'
 export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, columns, cta, copyright }: FooterContent) {
   return (
     <Section>
-      <div className="pt-24 px-6 md:px-[5%] rounded-t-[32px] bg-purple-900 relative overflow-hidden">
+      <motion.div 
+        className="pt-24 px-6 md:px-[5%] rounded-t-[32px] bg-purple-900 relative overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={fadeUp}
+      >
         {backgroundImageUrl ? (
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <Image src={backgroundImageUrl} alt="Footer Background" fill className="object-cover" />
@@ -80,7 +89,7 @@ export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, colum
             </div>
           </div>
         </Container>
-      </div>
+      </motion.div>
     </Section>
   )
 }

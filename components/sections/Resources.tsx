@@ -1,4 +1,7 @@
+"use client"
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { fadeUp, staggerContainer, hoverLift } from '@/components/ui/motion'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import { ChevronRight } from 'lucide-react'
@@ -6,11 +9,19 @@ import type { ResourcesContent, ResourceItem } from '@/types/content'
 
 function ResourceCard({ item }: { item: ResourceItem }) {
   return (
-    <div className="w-full flex flex-col">
-      <div className="bg-purple-50 p-[3px] rounded-[12px] shadow-[0_0_2px_rgba(0,0,0,0.05)]">
+    <motion.div variants={fadeUp} className="w-full flex flex-col">
+      <motion.div 
+        className="bg-purple-50 p-[3px] rounded-[12px] shadow-[0_0_2px_rgba(0,0,0,0.05)] cursor-pointer"
+        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      >
         <div className="h-[150px] w-full">
           <div className="relative h-full w-full overflow-hidden bg-purple-100 rounded-10">
-            <Image src={item.imageSrc} alt={item.title} fill className="object-cover" />
+            <Image 
+              src={item.imageSrc} 
+              alt={item.title} 
+              fill 
+              className="object-cover transition-transform duration-500 group-hover:scale-105" 
+            />
           </div>
         </div>
         <div className="px-5 py-6 flex flex-col gap-4">
@@ -23,8 +34,8 @@ function ResourceCard({ item }: { item: ResourceItem }) {
             <ChevronRight className="w-4 h-4 text-purple-600" />
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -35,15 +46,27 @@ export default function Resources({ headline, subcopy, items }: ResourcesContent
         <div className="rounded-[2rem] bg-white px-6 md:px-[5%] py-6 md:py-32">
           <Container className="max-w-[1280px]">
             <div className="mx-auto flex flex-col items-center gap-16">
-              <div className="flex flex-col items-center gap-4">
+              <motion.div 
+                className="flex flex-col items-center gap-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+              >
                 <h2 className="text-center font-museo text-[36px] leading-[40px] md:text-[40px] text-purple-600">{headline}</h2>
                 <p className="text-center text-[20px] leading-7 text-neutral-500">{subcopy}</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+              </motion.div>
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+              >
                 {items.map((it, idx) => (
                   <ResourceCard key={idx} item={it} />
                 ))}
-              </div>
+              </motion.div>
             </div>
           </Container>
         </div>

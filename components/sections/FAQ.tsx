@@ -1,5 +1,7 @@
 "use client"
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { fadeUp } from '@/components/ui/motion'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -9,7 +11,8 @@ import { useState } from 'react'
 
 function FAQCard({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div
+    <motion.div
+      variants={fadeUp}
       role="button"
       tabIndex={0}
       aria-expanded={isOpen}
@@ -34,7 +37,7 @@ function FAQCard({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; o
           ) : null}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -77,19 +80,31 @@ export default function FAQ({ headline, banner, items }: FAQContent) {
         <div className="rounded-[2rem] bg-white px-6 md:px-20 lg:px-32 py-6 md:py-32">
           <Container>
             <div className="grid w-full max-w-[896px] mx-auto items-start gap-16 lg:grid-cols-[360px_minmax(0,1fr)]">
-              <div className="w-full max-w-[360px] lg:sticky lg:top-40 flex flex-col gap-8 lg:gap-24">
+              <motion.div 
+                className="w-full max-w-[360px] lg:sticky lg:top-40 flex flex-col gap-8 lg:gap-24"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+              >
                 <div className="flex flex-col items-start">
                   <h2 className="text-left font-museo text-[36px] leading-[40px] text-purple-600">{headline}</h2>
                 </div>
                 <FAQBanner banner={banner} className="hidden lg:block" />
-              </div>
+              </motion.div>
 
-              <div className="flex-1 flex w-full flex-col gap-4">
+              <motion.div 
+                className="flex-1 flex w-full flex-col gap-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ staggerChildren: 0.1 }}
+              >
                 {items.map((it, idx) => (
                   <FAQCard key={idx} item={it} isOpen={openIndex === idx} onToggle={() => setOpenIndex(openIndex === idx ? -1 : idx)} />
                 ))}
                 <FAQBanner banner={banner} className="block lg:hidden mt-8" />
-              </div>
+              </motion.div>
             </div>
           </Container>
         </div>

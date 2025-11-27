@@ -1,4 +1,7 @@
+"use client"
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { fadeUp } from '@/components/ui/motion'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -17,13 +20,25 @@ export default function PhaseCalculator({ chipLabel, headline, subcopy, form, ba
           </div>
           <Container>
             <div className="relative z-10 flex w-full max-w-[896px] flex-col items-center gap-12 md:flex-row">
-              <div className="flex-1 flex w-full flex-col items-start gap-4">
+              <motion.div 
+                className="flex-1 flex w-full flex-col items-start gap-4"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+              >
                 <span className="inline-flex rounded-full bg-[#EFE8FD] px-4 py-1.5 outline outline-1 outline-white text-[14px] text-purple-600">{chipLabel}</span>
                 <h2 className="text-left font-museo text-[36px] leading-[40px] md:text-[40px] text-purple-600">{headline}</h2>
                 <p className="text-left text-[20px] leading-7 text-neutral-500">{subcopy}</p>
-              </div>
+              </motion.div>
 
-              <div className="flex-1 relative w-full">
+              <motion.div 
+                className="flex-1 relative w-full"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 <div className="absolute inset-0 -z-10 rounded-[16px] bg-purple-800 opacity-10 blur-[20px]" />
                 <div className="flex w-full flex-col items-start rounded-[16px] bg-white p-6 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10)] outline outline-1 outline-[rgba(166,112,219,0.05)]">
                   <div className="flex w-full flex-col gap-8">
@@ -49,7 +64,7 @@ export default function PhaseCalculator({ chipLabel, headline, subcopy, form, ba
                     <p className="text-center text-[14px] leading-5 text-neutral-500">{form.footerNote}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </Container>
         </div>
