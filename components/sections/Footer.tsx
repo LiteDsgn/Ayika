@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import Input from '@/components/ui/Input'
@@ -27,13 +28,19 @@ export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, colum
                     </div>
                     <div className="mt-4 flex flex-col gap-2">
                       {col.items.map((it, i) => (
-                        <div key={i} className="text-neutral-400 text-[16px] leading-6 hover:text-white transition-colors cursor-pointer">{it.label}</div>
+                        <Link 
+                          key={i} 
+                          href={it.href || '#'} 
+                          className="text-neutral-400 text-[16px] leading-6 hover:text-white transition-colors cursor-pointer"
+                        >
+                          {it.label}
+                        </Link>
                       ))}
                     </div>
                   </div>
                 ))}
 
-                <div className="flex flex-col gap-4 md:col-span-2">
+                <div id="footer-cta" className="flex flex-col gap-4 md:col-span-2 scroll-mt-28">
                   <div>
                     <h4 className="text-white text-[16px] leading-6 font-semibold">{cta.title}</h4>
                   </div>

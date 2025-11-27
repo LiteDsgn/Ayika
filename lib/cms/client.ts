@@ -271,20 +271,20 @@ export async function getHomePage(): Promise<HomePageContent> {
         {
           title: 'Links',
           items: [
-            { label: 'Features' },
-            { label: 'See It In Action' },
-            { label: 'Calculator' },
-            { label: 'FAQ' }
+            { label: 'Features', href: '#features' },
+            { label: 'See It In Action', href: '#showcase' },
+            { label: 'Calculator', href: '#calculator' },
+            { label: 'FAQ', href: '#faq' }
           ]
         },
         {
           title: 'Company',
           items: [
-            { label: 'About' },
-            { label: 'Contact' },
-            { label: 'Community' },
-            { label: 'Privacy' },
-            { label: 'Terms' }
+            { label: 'About', href: '#hero' },
+            { label: 'Contact', href: '#footer-cta' },
+            { label: 'Community', href: '#community' },
+            { label: 'Privacy', href: '#' },
+            { label: 'Terms', href: '#' }
           ]
         }
       ],

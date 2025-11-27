@@ -19,7 +19,7 @@ export default function Hero(props: HeroContent) {
   } = props
 
   return (
-    <div className="relative isolate w-full min-h-[38rem] md:min-h-[47rem] overflow-hidden">
+    <div id="hero" className="relative isolate w-full min-h-[38rem] md:min-h-[47rem] overflow-hidden scroll-mt-28">
       <div className="absolute inset-0 -z-10 bg-white" />
 
       <div className="px-6 md:px-20 py-16 md:py-24">

@@ -42,6 +42,10 @@
   --Color-link: var(--purple-600);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
 }
@@ -74,10 +78,3 @@ body {
   }
 }
 
-/* Fade mask on both ends for marquee container */
-.marquee-fade-mask {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, black 48px, black calc(100% - 48px), transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, black 48px, black calc(100% - 48px), transparent 100%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
