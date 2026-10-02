@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 import { fadeUp } from '@/components/ui/motion'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
-import Input from '@/components/ui/Input'
-import Button from '@/components/ui/Button'
+import WaitlistForm from '@/components/ui/WaitlistForm'
 import type { FooterContent } from '@/types/content'
 
 export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, columns, cta, copyright }: FooterContent) {
@@ -54,18 +53,16 @@ export default function Footer({ backgroundImageUrl, logoSrc, wordmarkSrc, colum
                     <h4 className="text-white text-[16px] leading-6 font-semibold">{cta.title}</h4>
                   </div>
                   <div className="pt-2 pb-6 flex flex-col gap-4">
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-                      <div className="relative h-14 w-full sm:flex-1 min-w-0 bg-white rounded-[10px] focus-within:ring-2 focus-within:ring-purple-400 focus-within:ring-offset-2 focus-within:ring-offset-purple-900">
-                        <Input
-                          type="email"
-                          placeholder={cta.emailPlaceholder}
-                          className="h-full bg-transparent focus:ring-0 focus:ring-offset-0"
-                        />
-                      </div>
-                      <Button variant="white" className="h-14 w-full sm:w-auto text-[16px] leading-6">
-                        {cta.ctaText}
-                      </Button>
-                    </div>
+                    <WaitlistForm
+                      source="footer"
+                      tone="dark"
+                      placeholder={cta.emailPlaceholder}
+                      ctaText={cta.ctaText}
+                      buttonVariant="white"
+                      inputWrapperClassName="relative h-14 w-full sm:flex-1 min-w-0 bg-white rounded-[10px] focus-within:ring-2 focus-within:ring-purple-400 focus-within:ring-offset-2 focus-within:ring-offset-purple-900"
+                      inputClassName="h-full bg-transparent focus:ring-0 focus:ring-offset-0"
+                      buttonClassName="h-14 w-full sm:w-auto text-[16px] leading-6"
+                    />
                     <div className="flex justify-center sm:justify-start">
                       <p className="text-neutral-400 text-[14px] leading-5 text-center sm:text-left">{cta.note}</p>
                     </div>

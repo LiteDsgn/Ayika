@@ -3,8 +3,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer, floating } from '@/components/ui/motion'
 import Container from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
-import Input from '@/components/ui/Input'
+import WaitlistForm from '@/components/ui/WaitlistForm'
 import type { HeroContent } from '@/types/content'
 
 import Typewriter from '@/components/ui/Typewriter'
@@ -61,14 +60,13 @@ export default function Hero(props: HeroContent) {
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-col gap-4">
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-                  <Input
-                    type="email"
-                    placeholder={emailPlaceholder}
-                    className="h-14 sm:max-w-[369px] border border-neutral-200 bg-purple-50"
-                  />
-                  <Button className="h-14 w-full sm:w-auto px-8 text-base font-medium">{ctaText}</Button>
-                </div>
+                <WaitlistForm
+                  source="hero"
+                  placeholder={emailPlaceholder}
+                  ctaText={ctaText}
+                  inputClassName="h-14 sm:max-w-[369px] border border-neutral-200 bg-purple-50"
+                  buttonClassName="h-14 w-full sm:w-auto px-8 text-base font-medium"
+                />
                 <p className="text-sm text-neutral-500">Early waitlist members get priority access • No spam, ever</p>
               </motion.div>
 

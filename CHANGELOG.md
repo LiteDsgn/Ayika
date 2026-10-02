@@ -21,6 +21,8 @@ This changelog adheres to:
 ## Unreleased
 -
 ### Added
+- Working waitlist form in `components/ui/WaitlistForm.tsx`, used by the Hero and Footer. Submits to Netlify Forms (form `waitlist`, declared in `public/__forms.html`) with a honeypot, a `source` field, and submitting/success/error states.
+- `scripts/shrink-svg-images.py` to re-encode oversized bitmaps embedded in SVG exports.
 - Mobile navigation menu in `components/ui/Nav.tsx` with hamburger toggle, dropdown links, and responsive CTAs.
 - Scroll-aware navigation bar with fixed positioning and dynamic background opacity.
 - Features section in `components/sections/Features.tsx` with CMS-driven content and assets from `public/Features/`.
@@ -35,6 +37,7 @@ This changelog adheres to:
 - Populated CMS data in `lib/cms/client.ts` to return all new sections; integrated into `app/page.tsx`.
 
 ### Changed
+- Hero images `ayikaScore.svg`, `user-img.svg` and `tasks-img.svg` now embed 3x WebP bitmaps instead of full-size PNGs (14.5 MB down to 0.4 MB; `public/` from 17 MB to 2.9 MB).
 - **Responsiveness Overhaul:**
   - **Hero:** Stacked email input and CTA on mobile; enabled proportional scaling for floating UI elements.
   - **Features:** Made feature preview images visible on mobile; optimized card layouts for small screens.
